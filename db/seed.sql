@@ -4,12 +4,12 @@
 
 INSERT INTO wheels (name, manufacturer, type, hybrid, time, is_favorite)
 VALUES
-('Equinox', 'Chevrolet','SUV', 'no', '2023', yes),
-('Prius', 'Toyota','Sedan', 'yes', '2022', true),
-('Model Y', 'Tesla','Sedan', 'no' '2022', no),
-('Ninja', 'Kawasaki','Motorcycle', 'no', '2019', yes);
+('Equinox', 'Chevrolet','SUV', false, '2023', true),
+('Prius', 'Toyota','Sedan', true, '2022', true),
+('Model Y', 'Tesla','Sedan', false, '2022', false),
+('Ninja', 'Kawasaki','Motorcycle', false, '2019', true);
 
-INSERT INTO wheels (wheels_id, reviewer, title, content, rating)
+INSERT INTO reviews (wheels_id, reviewer, title, content, rating)
 VALUES
 ('1', 'Eddie', 'My Favorite', 'This vehicle is cool', 4),
 ('2', 'Eddie', 'My Favorite', 'This vehicle is fuel efficient', 3),
