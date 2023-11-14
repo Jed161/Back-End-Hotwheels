@@ -7,11 +7,11 @@ CREATE DATABASE hotwheels_dev;
 CREATE TABLE hotwheels (
 	id SERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
-	imgUrl TEXT,
+	img_url TEXT,
 	category TEXT,
 	year INT,
 	engine TEXT,
-	description TEXT,
+	description VARCHAR,
 	is_favorite BOOLEAN
 );
 
