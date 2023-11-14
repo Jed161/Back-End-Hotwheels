@@ -1,7 +1,7 @@
 // DEPENDENCIES
 const express = require('express');
 const cors = require('cors');
-const hwheelController = require('.controllers/hwheelController.js');
+const hotwheelsController = require('.controllers/hotwheelsController.js');
 
 // CONFIGURATION
 const app = express();
@@ -9,6 +9,7 @@ const app = express();
 // MIDDLEWARE
 app.use(cors());
 app.use(express.json());
+app.use('/hotwheels', hotwheelsController);
 
 // ROUTES
 app.get('/', (req, res) => {
