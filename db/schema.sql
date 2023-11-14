@@ -12,7 +12,6 @@ CREATE TABLE hotwheels (
 	year INT,
 	engine TEXT,
 	description TEXT,
-	hybrid BOOLEAN,
 	is_favorite BOOLEAN
 );
 
