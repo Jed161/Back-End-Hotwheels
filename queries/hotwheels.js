@@ -32,8 +32,21 @@ const createHotwheel = async (hotwheel) => {
 	}
 };
 
+const deleteHotwheel = async (id) => {
+	try {
+		const deletedHotwheel = await db.one(
+			'DELETE FROM hotwheels WHERE id=$1 RETURNING *',
+			id
+		);
+		return deletedHotwheel;
+	} catch (error) {
+		return error;
+	}
+};
+
 module.exports = {
 	getAllHotwheels,
 	getOneHotwheel,
 	createHotwheel,
+	deleteHotwheel,
 };
