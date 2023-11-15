@@ -9,6 +9,16 @@ const getAllHotwheels = async () => {
 	}
 };
 
+const getOneHotwheel = async (id) => {
+	try {
+		const oneHotwheel = await db.one('SELECT * FROM hotwheels WHERE id=$1', id);
+		return oneHotwheel;
+	} catch (error) {
+		return error;
+	}
+};
+
 module.exports = {
 	getAllHotwheels,
+	getOneHotwheel,
 };
