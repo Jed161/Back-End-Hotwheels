@@ -44,9 +44,24 @@ const deleteHotwheel = async (id) => {
 	}
 };
 
+const updateHotwheel = async (id, hotwheel) => {
+	try {
+		const { name, img_url, category, year, engine, description, is_favorite } =
+			hotwheel;
+		const updatedHotwheel = await db.one(
+			'UPDATE hotwheels SET name=$1, img_url=$2, category=$3, year=$4, engine=$5, description=$6, is_favorite=$7 WHERE id=$8 RETURNING *',
+			[name, img_url, category, year, engine, description, is_favorite, id]
+		);
+		return updatedHotwheel;
+	} catch (error) {
+		return error;
+	}
+};
+
 module.exports = {
 	getAllHotwheels,
 	getOneHotwheel,
 	createHotwheel,
 	deleteHotwheel,
+	updateHotwheel,
 };

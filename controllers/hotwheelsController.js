@@ -5,6 +5,7 @@ const {
 	getOneHotwheel,
 	createHotwheel,
 	deleteHotwheel,
+	updateHotwheel,
 } = require('../queries/hotwheels.js');
 
 const { checkName, checkBoolean } = require('../validations/checkHotwheels.js');
@@ -52,6 +53,16 @@ hotwheels.delete('/:id', async (req, res) => {
 		}
 	} catch (error) {
 		res.send(error);
+	}
+});
+
+hotwheels.put('/:id', async (req, res) => {
+	const { id } = req.params;
+	const updatedHotwheel = await updateHotwheel(id, req.body);
+	if (updatedHotwheel.id) {
+		res.status(200).json(updatedHotwheel);
+	} else {
+		res.status(404).json('No hotwheel found with that id!');
 	}
 });
 
