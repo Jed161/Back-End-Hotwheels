@@ -1,6 +1,10 @@
 const express = require('express');
 
-const { getAllHotwheels, getOneHotwheel } = require('../queries/hotwheels.js');
+const {
+	getAllHotwheels,
+	getOneHotwheel,
+	createHotwheel,
+} = require('../queries/hotwheels.js');
 
 const { checkName, checkBoolean } = require('../validations/checkHotwheels.js');
 
@@ -22,6 +26,15 @@ hotwheels.get('/', async (req, res) => {
 		res.status(200).json({ success: true, data: { payload: allHotwheels } });
 	} else {
 		res.status(500).json({ success: false, data: { error: 'Server error' } });
+	}
+});
+
+hotwheels.post('/', checkName, checkBoolean, async (req, es) => {
+	try {
+		const createdHotwheel = await createHotwheel(req.body);
+		res.json(createdHotwheel);
+	} catch (error) {
+		res.status(400).json({ error: 'There was an error!' });
 	}
 });
 

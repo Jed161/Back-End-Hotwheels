@@ -18,7 +18,22 @@ const getOneHotwheel = async (id) => {
 	}
 };
 
+const createHotwheel = async (hotwheel) => {
+	const { name, img_url, category, year, engine, description, is_favorite } =
+		hotwheel;
+	try {
+		const createdHotwheel = await db.one(
+			'INSERT INTO hotwheels (name, img_url, category, year, engine, description, is_favorite) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+			[name, img_url, category, year, engine, description, is_favorite]
+		);
+		return createdHotwheel;
+	} catch (error) {
+		return error;
+	}
+};
+
 module.exports = {
 	getAllHotwheels,
 	getOneHotwheel,
+	createHotwheel,
 };
