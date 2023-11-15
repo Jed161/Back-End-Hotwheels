@@ -29,7 +29,7 @@ hotwheels.get('/', async (req, res) => {
 	}
 });
 
-hotwheels.post('/', checkName, checkBoolean, async (req, es) => {
+hotwheels.post('/', checkName, checkBoolean, async (req, res) => {
 	try {
 		const createdHotwheel = await createHotwheel(req.body);
 		res.json(createdHotwheel);
